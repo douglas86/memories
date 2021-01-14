@@ -29,7 +29,9 @@ const Form = ({ currentId, setCurrentId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (currentId === 0) {
+        console.log('currentId', currentId);
+
+        if (currentId === null) {
             dispatch(createPost(postData));
         } else {
             dispatch(updatePost(currentId, postData));
@@ -37,6 +39,7 @@ const Form = ({ currentId, setCurrentId }) => {
         clear();
         window.location.reload();
     };
+
     const clear = () => {
         setCurrentId(null);
         setPostData({
