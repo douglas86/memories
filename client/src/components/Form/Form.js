@@ -26,15 +26,16 @@ const Form = ({ currentId, setCurrentId }) => {
         }
     }, [post]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (currentId) {
-            dispatch(updatePost(currentId, postData));
-        } else {
+        if (currentId === 0) {
             dispatch(createPost(postData));
+        } else {
+            dispatch(updatePost(currentId, postData));
         }
         clear();
+        window.location.reload();
     };
     const clear = () => {
         setCurrentId(null);
